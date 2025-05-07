@@ -155,7 +155,7 @@
       const reader = new FileReader();
       reader.onload = function(e) {
         const base64Data = e.target.result.split(',')[1]; // Ambil base64 saja
-        fetch('https://script.google.com/macros/s/AKfycbyvItM6dNJ9nVMwJARbKwMB325AIpC0gkRcgWBDfiGDX79h-85wxZzSrsR7F5J0mBMQ/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbws1nyMDd_cH0HJZHGHK9P1zQQsw3UHsdq8fNQR92RnPv6PvWPtYuJq0saHJqzVBuVc/exec', {
           method: 'POST',
           body: new URLSearchParams({ file: base64Data }),
         })
@@ -179,7 +179,7 @@
 
     // Fungsi untuk load galeri dari spreadsheet
     function loadGallery() {
-      fetch('https://script.google.com/macros/s/AKfycbyvItM6dNJ9nVMwJARbKwMB325AIpC0gkRcgWBDfiGDX79h-85wxZzSrsR7F5J0mBMQ/exec')  // Ganti dengan URL Apps Script kamu
+      fetch('https://script.google.com/macros/s/AKfycbws1nyMDd_cH0HJZHGHK9P1zQQsw3UHsdq8fNQR92RnPv6PvWPtYuJq0saHJqzVBuVc/exec')  // Ganti dengan URL Apps Script kamu
         .then(response => response.json())
         .then(data => {
           const gallery = document.getElementById('gallery');
