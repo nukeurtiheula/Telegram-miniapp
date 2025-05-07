@@ -9,10 +9,10 @@
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-image: url('https://drive.google.com/uc?export=view&id=1k88V7r3keRvsvBjGgD_PdlJ8xcy3YdEj'); /* Ganti dengan link gambar kamu */
+  background-image: url('https://i.ibb.co.com/sdy5s5BW/pexels-eberhardgross-1624496.jpg'); /* Ganti dengan link gambar kamu */
   background-size: cover; /* Supaya gambar memenuhi seluruh latar belakang */
   background-position: center; /* Menempatkan gambar di tengah */
-  color: #fff;
+  color: #ffffff00;
 }
 
     h1 {
@@ -27,7 +27,7 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 40px;
-      background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+      background: rgba(255, 255, 255, 0); /* Semi-transparent white background */
       border-radius: 10px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
@@ -96,16 +96,16 @@
     .upload-section input[type="file"] {
       padding: 10px;
       font-size: 1rem;
-      border: 2px solid #0088cc;
+      border: 2px solid #0000009c;
       border-radius: 5px;
-      background-color: #f7f7f7;
+      background-color: #0000009c;
       cursor: pointer;
     }
 
     .upload-section button {
       padding: 10px 20px;
-      background-color: #0088cc;
-      color: white;
+      background-color: #000000;
+      color: rgb(255, 255, 255);
       font-size: 1rem;
       border: none;
       border-radius: 5px;
@@ -115,7 +115,7 @@
     }
 
     .upload-section button:hover {
-      background-color: #0077b6;
+      background-color: #0076b600;
     }
 
   </style>
@@ -155,7 +155,7 @@
       const reader = new FileReader();
       reader.onload = function(e) {
         const base64Data = e.target.result.split(',')[1]; // Ambil base64 saja
-        fetch('https://script.google.com/macros/s/AKfycbz6VBgbjRydtwjMc3CioFjzTuTIfiRwf6-ViQIbH2zCAGvNbZGoKur0tb5ovJUHtBvj/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbyvItM6dNJ9nVMwJARbKwMB325AIpC0gkRcgWBDfiGDX79h-85wxZzSrsR7F5J0mBMQ/exec', {
           method: 'POST',
           body: new URLSearchParams({ file: base64Data }),
         })
@@ -171,11 +171,15 @@
         .catch(error => alert('Error: ' + error));
       };
       reader.readAsDataURL(file);
+      if (!file.type.startsWith("image/")) {
+  alert("File harus berupa gambar!");
+  return;
+}
     }
 
     // Fungsi untuk load galeri dari spreadsheet
     function loadGallery() {
-      fetch('https://script.google.com/macros/s/AKfycbx....../exec')  // Ganti dengan URL Apps Script kamu
+      fetch('https://script.google.com/macros/s/AKfycbyvItM6dNJ9nVMwJARbKwMB325AIpC0gkRcgWBDfiGDX79h-85wxZzSrsR7F5J0mBMQ/exec')  // Ganti dengan URL Apps Script kamu
         .then(response => response.json())
         .then(data => {
           const gallery = document.getElementById('gallery');
