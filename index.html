@@ -155,7 +155,7 @@
       const reader = new FileReader();
       reader.onload = function(e) {
         const base64Data = e.target.result.split(',')[1]; // Ambil base64 saja
-        fetch('https://script.google.com/macros/s/AKfycbx....../exec', {
+        fetch('https://script.google.com/macros/s/AKfycbz6VBgbjRydtwjMc3CioFjzTuTIfiRwf6-ViQIbH2zCAGvNbZGoKur0tb5ovJUHtBvj/exec', {
           method: 'POST',
           body: new URLSearchParams({ file: base64Data }),
         })
