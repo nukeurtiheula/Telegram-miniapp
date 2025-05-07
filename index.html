@@ -35,8 +35,6 @@
   <button onclick="sendData()">Kirim ke Bot</button>
 
   <script>
-    const tg = window.Telegram.WebApp;
-
     function sendData() {
       const name = document.getElementById('nameInput').value;
       if (!name.trim()) {
@@ -44,35 +42,19 @@
         return;
       }
 
-      tg.sendData(JSON.stringify({ nama: name }));
-    }
+      const data = JSON.stringify({ nama: name });
 
-    tg.expand(); // Buka web app jadi full height
-    tg.ready();  // Tandakan ke Telegram kalau web app sudah siap
+      // Ganti URL di bawah dengan URL Web App Google Apps Script kamu
+      fetch('https://script.google.com/macros/s/AKfycbyj5cEIqPSwUxxiqtHY7aZfQMg8EPATWWglTfIFD0vLxUXRo3WIEUdAmnXxZNIuxuEF/exec?data=' + encodeURIComponent(data))
+        .then(response => response.text())
+        .then(result => {
+          alert("✅ Data berhasil dikirim ke bot!\n" + result);
+        })
+        .catch((error) => {
+          console.error("❌ Error:", error);
+          alert("❌ Gagal mengirim data");
+        });
+    }
   </script>
 </body>
 </html>
-
-function sendData() {
-  const name = document.getElementById('nameInput').value;
-  if (!name.trim()) {
-    alert("Nama tidak boleh kosong!");
-    return;
-  }
-
-  const data = JSON.stringify({ nama: name });
-
-  // Kirim data ke Web App di Google Apps Script
-  fetch('https://script.google.com/macros/s/AKfycbyj5cEIqPSwUxxiqtHY7aZfQMg8EPATWWglTfIFD0vLxUXRo3WIEUdAmnXxZNIuxuEF/exec', {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ data: data }),
-  })
-  .then(response => response.text())
-  .then(data => {
-    alert("Data berhasil dikirim ke bot!");
-  })
-  .catch((error) => {
-    console.error("Error:", error);
-  });
-}
